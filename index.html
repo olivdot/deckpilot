@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeckPilot Ops: The operations manager that never sleeps</title>
+<meta name="description" content="DeckPilot Ops watches your company's workflows, catches bottlenecks early, and handles routine follow-ups, approvals, and reports automatically. Join the early access list.">
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2">
+<link rel="shortcut icon" href="favicon.ico?v=2">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=4">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="DeckPilot Ops, home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__name">DeckPilot</span><span class="brand__tag">Ops</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="#features">Product</a>
+      <a class="nav__link" href="#how">How it works</a>
+      <a class="nav__link" href="#pricing">Pricing</a>
+      <a class="nav__link" href="#integrations">Integrations</a>
+    </nav>
+    <span class="nav__spacer"></span>
+    <a class="btn btn--primary btn--sm" href="#join">Early access</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <h1>The operations manager that never sleeps.</h1>
+      <p class="hero__sub">DeckPilot Ops watches your company's workflows, catches bottlenecks early, and handles routine follow-ups, approvals, and reports automatically.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#join">Join the early access list</a>
+        <a class="btn btn--ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero__note">Pre-launch. Illustrative data shown.</p>
+    </div>
+
+    <figure class="deck" style="margin:0" aria-label="Illustrative control deck showing workflow status, a flagged bottleneck, and an agent suggestion">
+      <div class="deck__bar">
+        <div class="deck__title"><b>Control deck</b><span>Northwind Supply · sample workspace</span></div>
+        <span class="live"><span class="dot"></span>Synced 2 min ago</span>
+      </div>
+      <div class="deck__kpis">
+        <div class="kpi"><span class="kpi__n">14</span><span class="kpi__l">Open approvals</span></div>
+        <div class="kpi"><span class="kpi__n">6</span><span class="kpi__l">Overdue tasks</span></div>
+        <div class="kpi"><span class="kpi__n">2</span><span class="kpi__l">Stalled workflows</span></div>
+        <div class="kpi"><span class="kpi__n">3</span><span class="kpi__l">Vendors waiting</span></div>
+      </div>
+      <ul class="rows">
+        <li class="row"><span><span class="row__name">Purchase approvals</span><span class="row__dept">Finance</span></span><span class="meter"><i style="--w:78%"></i></span><span class="chip"><span class="dot dot--danger"></span>Slower than usual</span></li>
+        <li class="row"><span><span class="row__name">Warehouse shelving delivery</span><span class="row__dept">Procurement</span></span><span class="meter"><i style="--w:55%"></i></span><span class="chip"><span class="dot dot--warn"></span>3 days late</span></li>
+        <li class="row"><span><span class="row__name">Q4 office move</span><span class="row__dept">Facilities</span></span><span class="meter"><i style="--w:42%"></i></span><span class="chip"><span class="dot"></span>On track</span></li>
+      </ul>
+      <div class="flag">
+        <div class="flag__head"><span class="dot dot--danger"></span>Bottleneck flagged</div>
+        <p class="flag__text">Purchase approvals in Finance are taking 4 days this week, up from 1.5. Three are waiting on the same person.</p>
+        <div class="compare" aria-hidden="true">
+          <div><span>Last week</span><span class="meter"><i style="--w:38%"></i></span><span>1.5d</span></div>
+          <div><span>This week</span><span class="meter"><i class="is-hot" style="--w:100%"></i></span><span>4.0d</span></div>
+        </div>
+        <div class="suggest" id="suggest">
+          <p class="suggest__q"><small>Agent suggestion</small>Send Dana Okafor a reminder about the 3 pending approvals, and escalate to Marcus Lee if there is no reply by Thursday.</p>
+          <div class="suggest__act">
+            <button class="btn btn--primary btn--sm" type="button" id="approve">Approve</button>
+            <button class="btn btn--ghost btn--sm" type="button" id="edit-draft">Edit draft</button>
+          </div>
+          <p class="suggest__done" role="status"><span><span class="dot dot--accent"></span> Approved. Reminder to Dana queued for 09:00.</span><button class="link-btn" type="button" id="undo">Undo</button></p>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section" id="problem" style="border-top:1px solid var(--color-rule)">
+  <div class="wrap split">
+    <div class="split__head reveal">
+      <h2>Your ops team is stuck being a human notification system.</h2>
+      <p class="lede">Operations leaders at growing companies spend most of the week on coordination, not strategy.</p>
+    </div>
+    <div class="reveal">
+      <ul class="pains">
+        <li>Chasing approvals that sit in someone's inbox for days.</li>
+        <li>Following up with vendors who haven't replied.</li>
+        <li>Compiling weekly status reports by hand from five different tools.</li>
+        <li>Discovering bottlenecks only after a deadline is missed.</li>
+        <li>Answering "where is this at?" questions all day.</li>
+      </ul>
+      <p class="problem__close">The data you need already lives in Slack, email, your project tracker, and spreadsheets. Nobody has time to watch all of it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT OVERVIEW -->
+<section class="section overview" id="overview">
+  <div class="wrap">
+    <h2 class="overview__head reveal">One deck. Every workflow. An agent that acts.</h2>
+    <ul class="pillars reveal">
+      <li><h3>See everything.</h3><p>One control deck shows the live state of every workflow, from open approvals to team workload, and links back to the source tool.</p></li>
+      <li><h3>Catch problems early.</h3><p>The agent learns what normal looks like, flags what is slower than usual, and explains it in plain language.</p></li>
+      <li><h3>Handle the routine.</h3><p>Follow-ups, routing, and reports go out without being asked. You approve anything that matters.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="wrap">
+    <h2 class="features__head reveal">Six jobs the agent takes off your plate.</h2>
+    <div class="mosaic">
+
+      <article class="tile tile--4 reveal">
+        <h3>The Control Deck</h3>
+        <p>A live overview of operations across departments: open approvals, overdue tasks, stalled workflows, vendor status, and team workload. Everything links back to the source tool.</p>
+        <div class="snip" aria-hidden="true">
+          <div class="snip__row"><span>Finance · open approvals</span><span>5</span></div>
+          <div class="snip__row"><span>Procurement · vendor replies overdue</span><span>3</span></div>
+          <div class="snip__row"><span>Facilities · stalled workflows</span><span>2</span></div>
+          <div class="snip__row"><span>People · overdue tasks</span><span>6</span></div>
+        </div>
+      </article>
+
+      <article class="tile tile--2 reveal">
+        <h3>Bottleneck Detection</h3>
+        <p>The agent learns normal workflow patterns and flags anything slower than usual.</p>
+        <div class="snip" aria-hidden="true">
+          <div class="compare">
+            <div style="grid-template-columns:4.5rem minmax(0,1fr) 2.5rem"><span>Last wk</span><span class="meter"><i style="--w:38%"></i></span><span>1.5d</span></div>
+            <div style="grid-template-columns:4.5rem minmax(0,1fr) 2.5rem"><span>This wk</span><span class="meter"><i class="is-hot" style="--w:100%"></i></span><span>4.0d</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tile tile--2 reveal">
+        <h3>Approval Routing</h3>
+        <p>Requests go to the right approver, with scheduled reminders and escalation if nothing moves.</p>
+        <div class="snip" aria-hidden="true">
+          <ol class="chain">
+            <li>Request submitted<small>Tue 14:10</small></li>
+            <li>Routed to Dana Okafor<small>Tue 14:10</small></li>
+            <li class="is-now">Reminder sent<small>Wed 09:00</small></li>
+            <li>Escalates to Marcus Lee<small>Thu 09:00</small></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="tile tile--4 reveal">
+        <h3>Vendor and Stakeholder Follow-ups</h3>
+        <p>The agent drafts and sends follow-ups when replies are overdue. Review each draft, or let routine ones send automatically.</p>
+        <div class="snip" aria-hidden="true">
+          <span class="snip__meta">To: Harbor Steel Co. · Re: shelving delivery date</span>
+          <p class="snip__msg">Hi Sam, the shelving order was due Monday. Can you confirm a new delivery date by end of day Thursday?</p>
+          <div class="mock-actions"><span class="mock-btn mock-btn--primary">Send</span><span class="mock-btn">Edit</span></div>
+        </div>
+      </article>
+
+      <article class="tile tile--3 reveal">
+        <h3>Automated Status Reports</h3>
+        <p>The weekly operations report is compiled from your connected tools and delivered every Monday morning. No more copy-pasting from five tabs.</p>
+        <div class="snip" aria-hidden="true">
+          <span class="snip__meta">Weekly ops report · Mon 08:00 · #leadership</span>
+          <div class="snip__row"><span>Approvals closed</span><span>31</span></div>
+          <div class="snip__row"><span>Overdue tasks</span><span>6</span></div>
+          <div class="snip__row"><span>Vendors waiting</span><span>3</span></div>
+        </div>
+      </article>
+
+      <article class="tile tile--3 reveal">
+        <h3>Ask the Agent</h3>
+        <p>Ask in plain language. Get answers from your company's own data.</p>
+        <div class="snip" aria-hidden="true">
+          <span class="snip__q">What's blocking the Q4 office move?</span>
+          <p class="snip__a">Two items. The furniture quote is waiting on Priya Raman, and the lease amendment has not been countersigned.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how" id="how">
+  <div class="wrap">
+    <h2 class="how__head reveal">Connected in minutes. Useful the same week.</h2>
+    <ol class="steps reveal">
+      <li><span class="stage">1.0</span><h3>Connect your tools.</h3><p>Link Slack, email, your project tracker, and spreadsheets in a few minutes.</p></li>
+      <li><span class="stage">2.0</span><h3>DeckPilot learns your workflows.</h3><p>The agent maps how work moves through your company and what "normal" looks like.</p></li>
+      <li><span class="stage">3.0</span><h3>Let it fly.</h3><p>Get your control deck, real-time alerts, and routine operations handled automatically, with you approving anything important.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- EXAMPLE AGENT ACTIONS (dark band) -->
+<section class="section band" id="actions">
+  <div class="wrap split">
+    <div class="split__head reveal">
+      <h2>What the agent did before you opened your laptop.</h2>
+      <p class="lede">Every action is logged, and anything that leaves the company waits for your approval.</p>
+      <p>ILLUSTRATIVE ACTIVITY FEED</p>
+    </div>
+    <ul class="feed reveal">
+      <li><time>08:00</time><span class="tag">REPORT</span><p>Compiled and sent the weekly ops report to #leadership</p></li>
+      <li><time>08:12</time><span class="tag">REMINDER</span><p>Sent a reminder to Priya about 2 pending purchase approvals</p></li>
+      <li><time>08:40</time><span class="tag">FLAG</span><p>Flagged: Vendor delivery for warehouse shelving is 3 days overdue</p></li>
+      <li><time>09:05</time><span class="tag tag--accent">NEEDS YOU</span><p>Drafted a follow-up to Harbor Steel Co.<small>Waiting for your approval before it sends.</small></p></li>
+      <li><time>09:30</time><span class="tag">ROUTED</span><p>Routed a software renewal to Marcus Lee for approval</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="wrap split">
+    <div class="split__head reveal">
+      <h2>One plan. Priced per seat.</h2>
+      <p class="lede">Every feature is included. You pay for the people who use the deck.</p>
+      <p class="price"><span class="price__n">$25</span><span class="price__u">per seat, per month</span></p>
+      <div><a class="btn btn--primary" href="#join">Join the early access list</a></div>
+    </div>
+    <ul class="included reveal">
+      <li><b>The Control Deck</b><span>Live state of every workflow, linked to the source tool.</span></li>
+      <li><b>Bottleneck Detection</b><span>Flags what is slower than usual, in plain language.</span></li>
+      <li><b>Approval Routing</b><span>Right approver, scheduled reminders, escalation.</span></li>
+      <li><b>Vendor and stakeholder follow-ups</b><span>Drafted for review, or sent automatically for routine ones.</span></li>
+      <li><b>Automated status reports</b><span>Delivered to Slack or email every Monday morning.</span></li>
+      <li><b>Ask the Agent</b><span>Plain-language answers from your company's data.</span></li>
+      <li><b>Approval, activity log, and permissions</b><span>Human approval by default, a full log, read-only mode, role-based access.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="section works" id="integrations">
+  <div class="wrap">
+    <h2 class="works__head reveal">Works with the tools you already use.</h2>
+    <ul class="tools reveal"><li><span class="logo" role="img" aria-label="Slack" title="Slack" style="--logo:url(logos/slack.svg)"></span></li><li><span class="logo" role="img" aria-label="Gmail" title="Gmail" style="--logo:url(logos/gmail.svg)"></span></li><li><span class="logo" role="img" aria-label="Google Workspace" title="Google Workspace" style="--logo:url(logos/googleworkspace.svg)"></span></li><li><span class="logo" role="img" aria-label="Microsoft 365" title="Microsoft 365" style="--logo:url(logos/microsoft365.svg)"></span></li><li><span class="logo" role="img" aria-label="Outlook" title="Outlook" style="--logo:url(logos/outlook.svg)"></span></li><li><span class="logo" role="img" aria-label="Asana" title="Asana" style="--logo:url(logos/asana.svg)"></span></li><li><span class="logo" role="img" aria-label="Jira" title="Jira" style="--logo:url(logos/jira.svg)"></span></li><li><span class="logo" role="img" aria-label="Linear" title="Linear" style="--logo:url(logos/linear.svg)"></span></li><li><span class="logo" role="img" aria-label="Monday.com" title="Monday.com" style="--logo:url(logos/monday.svg)"></span></li><li><span class="logo" role="img" aria-label="Notion" title="Notion" style="--logo:url(logos/notion.svg)"></span></li><li><span class="logo" role="img" aria-label="HubSpot" title="HubSpot" style="--logo:url(logos/hubspot.svg)"></span></li><li><span class="logo" role="img" aria-label="Salesforce" title="Salesforce" style="--logo:url(logos/salesforce.svg)"></span></li><li><span class="logo" role="img" aria-label="Google Sheets" title="Google Sheets" style="--logo:url(logos/googlesheets.svg)"></span></li><li><span class="logo" role="img" aria-label="Airtable" title="Airtable" style="--logo:url(logos/airtable.svg)"></span></li></ul>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="join" id="join">
+  <div class="wrap join__grid">
+    <h2 class="reveal">Put your operations on autopilot.</h2>
+    <form class="join__form reveal" id="join-form" novalidate>
+      <label for="email">Work email</label>
+      <div class="field">
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required aria-describedby="join-status">
+        <button class="btn btn--primary" type="submit" id="join-submit">Join the early access list</button>
+      </div>
+      <p class="join__status" id="join-status" role="status" aria-live="polite"></p>
+      <p class="join__small">Launching soon for teams of 50 to 500.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__line">
+    <a class="brand" href="#top" aria-label="DeckPilot Ops, back to top">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__name">DeckPilot</span><span class="brand__tag">Ops</span>
+    </a>
+    <span class="foot__spacer"></span>
+    <a href="mailto:hello@usedeckpilot.com">hello@usedeckpilot.com</a>
+    <a href="privacy.html">Privacy policy</a>
+    <span>© 2026 DeckPilot Ops</span>
+  </div>
+</footer>
+
+<script src="script.js?v=2" defer></script>
+</body>
+</html>
